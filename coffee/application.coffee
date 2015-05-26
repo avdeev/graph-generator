@@ -47,6 +47,6 @@ $ ->
     for i in [0..(vertexCount - 1)]
       for j in [0..i]
         if isEdgeExist(i, j)
-          output += "#{i}-#{j}\n"
+          output += "#{i + 1}-#{j + 1}\n"
     
     $output.html $('<pre>').html output

@@ -55,7 +55,7 @@
       for (i = _m = 0, _ref3 = vertexCount - 1; 0 <= _ref3 ? _m <= _ref3 : _m >= _ref3; i = 0 <= _ref3 ? ++_m : --_m) {
         for (j = _n = 0; 0 <= i ? _n <= i : _n >= i; j = 0 <= i ? ++_n : --_n) {
           if (isEdgeExist(i, j)) {
-            output += "" + i + "-" + j + "\n";
+            output += "" + (i + 1) + "-" + (j + 1) + "\n";
           }
         }
       }
