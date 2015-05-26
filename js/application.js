@@ -57,7 +57,15 @@
           }
         }
       }
-      return $output.html($('<pre>').html(output));
+      $output.html($('<pre>').html(output));
+      $output.prepend($('<br><br>'));
+      return $output.prepend($('<button class="btn btn-default">Сохранить в файл</button>').on('click', function(e) {
+        var blob;
+        blob = new Blob([output], {
+          type: "text/plain;charset=utf-8"
+        });
+        return saveAs(blob, "graph.txt");
+      }));
     });
   });
 

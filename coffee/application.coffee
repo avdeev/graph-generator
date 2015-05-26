@@ -49,3 +49,7 @@ $ ->
           output += "#{j + 1}-#{i + 1}\n"
     
     $output.html $('<pre>').html output
+    $output.prepend $('<br><br>')
+    $output.prepend $('<button class="btn btn-default">Сохранить в файл</button>').on 'click', (e) ->
+      blob = new Blob [output], type: "text/plain;charset=utf-8"
+      saveAs blob, "graph.txt"
