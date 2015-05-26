@@ -10,6 +10,8 @@ $ ->
     vertexCount = parseInt $vertexCount.val()
     edgeCount = parseInt $edgeCount.val()
 
+    maxEdgeCount = vertexCount * (vertexCount - 1) / 2
+
     realEdgeCounter = 0
 
     graph = []
@@ -28,12 +30,9 @@ $ ->
       Math.floor(Math.random() * (max - min) + min)
         
     # создаём цикл
-    addEdge(i, i + 1) for i in [0..(vertexCount - 2)]
-
-    # создаём второй цикл
-    for i in [0..(vertexCount - 2)]
-      if i + 2 <= vertexCount - 1
-        addEdge(i, i + 2)
+    for i in [0..(vertexCount - 1)]
+      if i < vertexCount - 1
+        addEdge(i, i + 1)
       else
         addEdge(i, 0)
 
@@ -41,12 +40,12 @@ $ ->
       i = getRandom(0, vertexCount - 1)
       j = getRandom(0, vertexCount - 1)
       addEdge(i, j) unless isEdgeExist(i, j)
-      break if realEdgeCounter >= edgeCount or realEdgeCounter >= vertexCount * (vertexCount - 1) / 2
+      break if realEdgeCounter >= edgeCount or realEdgeCounter >= maxEdgeCount
 
     output = ''
     for i in [0..(vertexCount - 1)]
       for j in [0..i]
         if isEdgeExist(i, j)
-          output += "#{i + 1}-#{j + 1}\n"
+          output += "#{j + 1}-#{i + 1}\n"
     
     $output.html $('<pre>').html output

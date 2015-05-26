@@ -6,10 +6,11 @@
     $edgeCount = $('#edge-count');
     $output = $('#output');
     return $form.on('submit', function(e) {
-      var addEdge, edgeCount, getRandom, graph, i, isEdgeExist, j, output, realEdgeCounter, vertexCount, _i, _j, _k, _l, _m, _n, _ref, _ref1, _ref2, _ref3;
+      var addEdge, edgeCount, getRandom, graph, i, isEdgeExist, j, maxEdgeCount, output, realEdgeCounter, vertexCount, _i, _j, _k, _l, _m, _ref, _ref1, _ref2;
       e.preventDefault();
       vertexCount = parseInt($vertexCount.val());
       edgeCount = parseInt($edgeCount.val());
+      maxEdgeCount = vertexCount * (vertexCount - 1) / 2;
       realEdgeCounter = 0;
       graph = [];
       for (i = _i = 0, _ref = vertexCount - 1; 0 <= _ref ? _i <= _ref : _i >= _ref; i = 0 <= _ref ? ++_i : --_i) {
@@ -31,12 +32,9 @@
         }
         return Math.floor(Math.random() * (max - min) + min);
       };
-      for (i = _k = 0, _ref1 = vertexCount - 2; 0 <= _ref1 ? _k <= _ref1 : _k >= _ref1; i = 0 <= _ref1 ? ++_k : --_k) {
-        addEdge(i, i + 1);
-      }
-      for (i = _l = 0, _ref2 = vertexCount - 2; 0 <= _ref2 ? _l <= _ref2 : _l >= _ref2; i = 0 <= _ref2 ? ++_l : --_l) {
-        if (i + 2 <= vertexCount - 1) {
-          addEdge(i, i + 2);
+      for (i = _k = 0, _ref1 = vertexCount - 1; 0 <= _ref1 ? _k <= _ref1 : _k >= _ref1; i = 0 <= _ref1 ? ++_k : --_k) {
+        if (i < vertexCount - 1) {
+          addEdge(i, i + 1);
         } else {
           addEdge(i, 0);
         }
@@ -47,15 +45,15 @@
         if (!isEdgeExist(i, j)) {
           addEdge(i, j);
         }
-        if (realEdgeCounter >= edgeCount || realEdgeCounter >= vertexCount * (vertexCount - 1) / 2) {
+        if (realEdgeCounter >= edgeCount || realEdgeCounter >= maxEdgeCount) {
           break;
         }
       }
       output = '';
-      for (i = _m = 0, _ref3 = vertexCount - 1; 0 <= _ref3 ? _m <= _ref3 : _m >= _ref3; i = 0 <= _ref3 ? ++_m : --_m) {
-        for (j = _n = 0; 0 <= i ? _n <= i : _n >= i; j = 0 <= i ? ++_n : --_n) {
+      for (i = _l = 0, _ref2 = vertexCount - 1; 0 <= _ref2 ? _l <= _ref2 : _l >= _ref2; i = 0 <= _ref2 ? ++_l : --_l) {
+        for (j = _m = 0; 0 <= i ? _m <= i : _m >= i; j = 0 <= i ? ++_m : --_m) {
           if (isEdgeExist(i, j)) {
-            output += "" + (i + 1) + "-" + (j + 1) + "\n";
+            output += "" + (j + 1) + "-" + (i + 1) + "\n";
           }
         }
       }
