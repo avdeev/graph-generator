@@ -1,0 +1,74 @@
+
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+
+    <title>Генератор графов без мостов, листьев и петель</title>
+
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/bootstrap-theme.min.css" rel="stylesheet">
+    <link href="css/dashboard.css" rel="stylesheet">
+    <link href="css/application.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Показать навигацию</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">Генератор графов без мостов, листьев и петель</a>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-3 sidebar">
+          <form class="form-inline" id="form-input-data">
+            <div class="row">
+              <div class="col-xs-12 btns-top">
+                <input type="submit" class="btn btn-primary" id="calculate" value='Сгенерировать граф'>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-xs-12">
+                <h4>Количество вершин</h4>
+                <input type="number" class="form-control" value="100" id='vertex-count'>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-xs-12">
+                <h4>Количество ребер</h4>
+                <input type="number" class="form-control" value="200" id='edge-count'>
+              </div>
+            </div>
+          </form>
+        </div>
+
+        <div class="col-sm-9 col-sm-offset-3 main" id="output">
+        </div>
+      </div>
+    </div>
+
+    <script src="js/vendor/jquery.min.js"></script>
+    <script src="js/vendor/bootstrap.min.js"></script>
+
+    <script src="js/application.js"></script>
+  </body>
+</html>
